@@ -5,26 +5,40 @@ clear
 COIN_1=5
 COIN_2=10
 COIN_3=25
-BASE_PRICE=100
-remaining=100
+BASE_PRICE=85
+remaining=$((BASE_PRICE+((RANDOM%7)*5)))
 
-echo -e "Welcome to the Soda Machine. You can enter values of $COIN_1, $COIN_2, or $COIN_3 in payment. "
+echo -e "Welcome to the Soda Machine. You can enter values of $COIN_1, $COIN_2, or $COIN_3 in payment. \n"
 read -p "What type of soda would you like?: " soda_choice
-echo -e "The current price of $soda_choice is $remaining. "
+
+		if [[ $remaining -eq 100 ]];then
+			echo -e "\nThe current price of $soda_choice is \$1.00.\n"
+		else
+			echo -e "\nThe current price of $soda_choice is $remaining cents.\n"
+		fi
+
+
+
 while true;
 	do
-		do
-			if [[ $remaining -lt 0 ]];then
-				echo -e "You have been refunded $((-$remaining)) cents."
-			elif [[ $remaining -le 0 ]];then
-				echo -e "Your $soda_choice is being dispensed.\n"
-				echo -e "Thank you!"
-				read -p "Press the enter key to close the script "
-			fi
-		done
-
-		echo -e "You still owe $remaining. "
+		
+		if [[ $remaining -lt 0 ]];then
+			echo -e "You have been refunded $((-$remaining)) cents."
+			echo -e "Your $soda_choice is being dispensed.\n"
+			echo -e "Thank you!"
+			read -p "Press the enter key to close the script "
+			break
+		elif [[ $remaining -eq 0 ]];then
+			echo -e "Your $soda_choice is being dispensed.\n"
+			echo -e "Thank you!"
+			read -p "Press the enter key to close the script "
+			break
+		fi
+	
+			
+		echo -e "You still owe $remaining cents. \n"
 		read -p "Enter a coin: " coin_choice
+		
 		if [[ $coin_choice -eq $COIN_1 ]];then
 			remaining=$((remaining-$COIN_1))
 			echo "You have inserted a nickel."	
@@ -37,8 +51,8 @@ while true;
 		else
 			echo "That is not a valid amount."
 		fi
+
 	done
-	
 
 #Pseudocode
 #Greet user
