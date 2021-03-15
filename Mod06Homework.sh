@@ -74,7 +74,7 @@ draw_cards() {
 	read -p "How many cards would you like to draw from this deck? " cards_requested#Cards requested is amount of cards user requested
 	
 	#Regex, regular expression check if input cards_requested NOT valid
-	if ! [[ $cards_requested =~ ^[+]?[0-9] ]] 2>>/dev/null;then#2/dev/null filters errors
+	if ! [[ $cards_requested =~ ^[+]?[0-9] ]] 2>>/dev/null;then #2/dev/null filters errors
 		clear
 		echo -e "Invalid option.	Press Enter to return to the main menu: "
 		read
@@ -118,11 +118,11 @@ draw_cards() {
 			if [[ $suit -eq 0 ]];then#if suit variable = 0, then choose and remove spades
 				spades_gone=1
 				continue
-				else
-					card=$((RANDOM%Suit_length))#chosen card is made by RANDOM modulus length of suit
-					echo ${playSpades[$card]}
-					playSpades=(${playSpades[*]:0:$card} ${playSpades[*]:$(($card + 1))})
-					cards_requested=$(($cards_requested-1))#remove card from cards_requested
+			else
+				card=$((RANDOM%Suit_length))#chosen card is made by RANDOM modulus length of suit
+				echo ${playSpades[$card]}
+				playSpades=(${playSpades[*]:0:$card} ${playSpades[*]:$(($card + 1))})
+				cards_requested=$(($cards_requested-1))#remove card from cards_requested
 			fi
 
 			#Diamonds
