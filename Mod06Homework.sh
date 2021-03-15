@@ -72,7 +72,7 @@ draw_cards() {
 	#check for valid input
 	read -p "How many cards would you like to draw from this deck? " cards_requested #Cards requested is amount of cards user requested
 	#Regex, regular expression check if input cards_requested NOT valid
-	if ! [[ $cards_requested =~ ^[+]?[0-9] ]] 2>>/dev/null;then #2/dev/null filters errors
+	if ! [[ $cards_requested =~ ^[+]?[0-9] ]] 2>>/dev/null;then #2/dev/null puts errors in bit bucket
 		clear
 		echo -e "Invalid option.	Press Enter to return to the main menu: "
 		read
@@ -129,7 +129,7 @@ draw_cards() {
 					else
 						card=$((RANDOM%Suit_length))
 						echo ${playDiamonds[$card]}
-						playDiamonds=${playDiamonds[*]:0:$card} ${playDiamonds[*]:$((card + 1))}
+						playDiamonds=(${playDiamonds[*]:0:$card} ${playDiamonds[*]:$((card + 1))})
 						cards_requested=$(($cards_requested-1)) #remove card from cards_requested
 			fi	
 
@@ -163,6 +163,14 @@ done
 		echo
 		read -p "Press Enter to continue"
 }
+
+
+
+
+#In between function to draw the cards and loop for menu, be sure to call function to
+#initialize your first new deck
+shuffle
+
 
 
 
