@@ -155,7 +155,7 @@ draw_cards() {
 					else
 						card=$((RANDOM%Suit_length))
 						echo ${playHearts[$card]}
-						playHearts=(${playHearts[*]:0:$card} $playHearts[*]:$(($card + 1))})
+						playHearts=(${playHearts[*]:0:$card} ${playHearts[*]:$(($card + 1))})
 						cards_requested=$(($cards_requested-1))
 				fi
 			fi
