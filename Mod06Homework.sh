@@ -71,8 +71,7 @@ shuffle(){
 draw_cards() {
 	clear
 	#check for valid input
-	read -p "How many cards would you like to draw from this deck? " cards_requested#Cards requested is amount of cards user requested
-	
+	read -p "How many cards would you like to draw from this deck? " cards_requested #Cards requested is amount of cards user requested
 	#Regex, regular expression check if input cards_requested NOT valid
 	if ! [[ $cards_requested =~ ^[+]?[0-9] ]] 2>>/dev/null;then #2/dev/null filters errors
 		clear
@@ -109,11 +108,12 @@ draw_cards() {
 
 		#Get a random suit
 		suit=$((RANDOM%4)) #Assign a random value between 0 and 3 to a variable called suit
-		
 			#Spades
 			if [[ $suit -eq 0 ]];then #if suit variable = 0, then choose and remove spades
-				spades_gone=1
-				continue
+				Suit_length=${#playSpades[@]}
+				if [[ $Suit_length -eq 0 ]]; then
+					spades_gone=1
+					continue
 			else
 				card=$((RANDOM%Suit_length)) #chosen card is made by RANDOM modulus length of suit
 				echo ${playSpades[$card]}
@@ -122,7 +122,8 @@ draw_cards() {
 			fi
 
 			#Diamonds
-			elif [[ $suit -eq 1 ]];then #suit variable 1 choice = diamonds
+			elif [[ $suit -eq 1 ]];then 
+				#suit variable 1 choice = diamonds
 				Suit_length=${#playDiamonds[@]}
 				if [[ $suit_length -eq 0 ]];then
 					diamonds_gone=1
@@ -142,13 +143,11 @@ draw_cards() {
 					clubs_gone=1
 					continue
 					else
-					card=$((RANDOM%Suit_length)
+					card=$((RANDOM%Suit_length))
 					echo ${playClubs[$card]}
 					playClubs=(${playClubs[*]:0:$card} ${playClubs[*]:$(($card + 1))}
 					cards_requested=$(($cards_requested-1))
 				fi
-
-
 
 			#Hearts
 			else
