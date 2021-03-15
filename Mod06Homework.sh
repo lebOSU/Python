@@ -129,10 +129,10 @@ draw_cards() {
 					diamonds_gone=1
 					continue
 					else
-					card=$((RANDOM%Suit_length))
-					echo ${playDiamonds[$card]}
-					playDiamonds=${playDiamonds[*]:0:$card} ${playDiamonds[*]:$((card + 1))}
-					cards_requested=$(($cards_requested-1)) #remove card from cards_requested
+						card=$((RANDOM%Suit_length))
+						echo ${playDiamonds[$card]}
+						playDiamonds=${playDiamonds[*]:0:$card} ${playDiamonds[*]:$((card + 1))}
+						cards_requested=$(($cards_requested-1)) #remove card from cards_requested
 				fi	
 
 
@@ -145,7 +145,7 @@ draw_cards() {
 					else
 					card=$((RANDOM%Suit_length))
 					echo ${playClubs[$card]}
-					playClubs=(${playClubs[*]:0:$card} ${playClubs[*]:$(($card + 1))}
+					playClubs=(${playClubs[*]:0:$card} ${playClubs[*]:$(($card + 1))})
 					cards_requested=$(($cards_requested-1))
 				fi
 
@@ -158,25 +158,23 @@ draw_cards() {
 					else
 						card=$((RANDOM%Suit_length))
 						echo ${playHearts[$card]}
-						playHearts=${playHearts[*]:0:$card} $playHearts[*]:$(($card + 1))})
+						playHearts=(${playHearts[*]:0:$card} $playHearts[*]:$(($card + 1))})
 						cards_requested=$(($cards_requested-1))
 				fi
 	
 			fi
-		done
 		echo
 		read -p "Press Enter to continue"
 }
 
 
-#Call new deck function
-shuffle
 
 #Menu
 while true;
 do	
 
 	#Menu echo
+	clear
 	echo "
 Welcome to the card deck simulator.
 Please select from the following options:
