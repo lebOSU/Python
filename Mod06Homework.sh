@@ -95,10 +95,6 @@ draw_cards() {
 	fi
 	
 
-
-
-
-
 	#Print the requested cards
 	echo -e "Your cards are:\n"
 		#Loop and get the number of requested cards
@@ -115,18 +111,18 @@ draw_cards() {
 		suit=$((RANDOM%4))#Assign a random value between 0 and 3 to a variable called suit
 		
 			#Spades
-			if [[ $suit -eq 0 ]];then#if suit variable = 0, then choose and remove spades
+			if [[ $suit -eq 0 ]];then #if suit variable = 0, then choose and remove spades
 				spades_gone=1
 				continue
 			else
-				card=$((RANDOM%Suit_length))#chosen card is made by RANDOM modulus length of suit
+				card=$((RANDOM%Suit_length)) #chosen card is made by RANDOM modulus length of suit
 				echo ${playSpades[$card]}
 				playSpades=(${playSpades[*]:0:$card} ${playSpades[*]:$(($card + 1))})
-				cards_requested=$(($cards_requested-1))#remove card from cards_requested
+				cards_requested=$(($cards_requested-1)) #remove card from cards_requested
 			fi
 
 			#Diamonds
-			elif [[ $suit -eq 1 ]];then#suit variable 1 choice = diamonds
+			elif [[ $suit -eq 1 ]];then #suit variable 1 choice = diamonds
 				Suit_length=${#playDiamonds[@]}
 				if [[ $suit_length -eq 0 ]];then
 					diamonds_gone=1
@@ -135,12 +131,12 @@ draw_cards() {
 					card=$((RANDOM%Suit_length))
 					echo ${playDiamonds[$card]}
 					playDiamonds=${playDiamonds[*]:0:$card} ${playDiamonds[*]:$((card + 1))}
-					cards_requested=$(($cards_requested-1))#remove card from cards_requested
+					cards_requested=$(($cards_requested-1)) #remove card from cards_requested
 				fi	
 
 
 			#Clubs
-			elif [[ $suit -eq 2 ]];then#suit variable 2 choice = clubs
+			elif [[ $suit -eq 2 ]];then #suit variable 2 choice = clubs
 				Suit_length=${#playClubs[@]}
 				if [[ $Suit_length -eq 0 ]];then
 					clubs_gone=1
