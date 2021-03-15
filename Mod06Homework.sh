@@ -4,7 +4,7 @@
 #Code order spades diamonds clubs hearts
 
 #declare and fill the four suits for the deck
-declare -a spades=('Ace_of_Spades' 'King_of_Spades' \#declare -a for declaring array
+declare -a spades=('Ace_of_Spades' 'King_of_Spades' \
             'Queen_of_Spades' 'Jack_of_Spades' \
             '10_of_Spades' '9_of_Spades' \
             '8_of_Spades' '7_of_Spades' \
@@ -46,7 +46,6 @@ declare -a playHearts=()
 
 
 
-
 #Shuffle function
 #Menu choice 2
 shuffle(){
@@ -59,10 +58,10 @@ shuffle(){
 	hearts_gone=0
 
 	#Copy each original suit to a play suit
-	playSpades=($spades[*])
-	playDiamonds=($diamonds[*])
-	playClubs=($clubs[*])
-	playHearts=($hearts[*])
+	playSpades=(${spades[*]})
+	playDiamonds=(${diamonds[*]})
+	playClubs=(${clubs[*]})
+	playHearts=(${hearts[*]})
 }
 
 
@@ -104,7 +103,6 @@ draw_cards() {
 				echo -e "All done\n"
 				break
 			fi
-		done
 
 		#Get a random suit
 		suit=$((RANDOM%4)) #Assign a random value between 0 and 3 to a variable called suit
@@ -125,7 +123,7 @@ draw_cards() {
 			elif [[ $suit -eq 1 ]];then 
 				#suit variable 1 choice = diamonds
 				Suit_length=${#playDiamonds[@]}
-				if [[ $suit_length -eq 0 ]];then
+				if [[ $Suit_length -eq 0 ]];then
 					diamonds_gone=1
 					continue
 					else
@@ -133,8 +131,7 @@ draw_cards() {
 						echo ${playDiamonds[$card]}
 						playDiamonds=${playDiamonds[*]:0:$card} ${playDiamonds[*]:$((card + 1))}
 						cards_requested=$(($cards_requested-1)) #remove card from cards_requested
-				fi	
-
+			fi	
 
 			#Clubs
 			elif [[ $suit -eq 2 ]];then #suit variable 2 choice = clubs
@@ -143,10 +140,10 @@ draw_cards() {
 					clubs_gone=1
 					continue
 					else
-					card=$((RANDOM%Suit_length))
-					echo ${playClubs[$card]}
-					playClubs=(${playClubs[*]:0:$card} ${playClubs[*]:$(($card + 1))})
-					cards_requested=$(($cards_requested-1))
+						card=$((RANDOM%Suit_length))
+						echo ${playClubs[$card]}
+						playClubs=(${playClubs[*]:0:$card} ${playClubs[*]:$(($card + 1))})
+						cards_requested=$(($cards_requested-1))
 				fi
 
 			#Hearts
@@ -161,8 +158,8 @@ draw_cards() {
 						playHearts=(${playHearts[*]:0:$card} $playHearts[*]:$(($card + 1))})
 						cards_requested=$(($cards_requested-1))
 				fi
-	
 			fi
+done
 		echo
 		read -p "Press Enter to continue"
 }
@@ -178,9 +175,11 @@ do
 	echo "
 Welcome to the card deck simulator.
 Please select from the following options:
+
 	1.	Draw a selected number of cards from the current deck
 	2.	Get a new deck of cards
-	3.	Exit"
+	3.	Exit
+"
 
 
 	#Decisions from menu
