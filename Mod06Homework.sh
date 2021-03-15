@@ -4,6 +4,7 @@
 #Code order spades diamonds clubs hearts
 
 #declare and fill the four suits for the deck
+#declare -a for arrays
 declare -a spades=('Ace_of_Spades' 'King_of_Spades' \
             'Queen_of_Spades' 'Jack_of_Spades' \
             '10_of_Spades' '9_of_Spades' \
