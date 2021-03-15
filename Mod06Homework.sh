@@ -105,10 +105,10 @@ draw_cards() {
 				echo -e "All done\n"
 				break
 			fi
-
+		done
 
 		#Get a random suit
-		suit=$((RANDOM%4))#Assign a random value between 0 and 3 to a variable called suit
+		suit=$((RANDOM%4)) #Assign a random value between 0 and 3 to a variable called suit
 		
 			#Spades
 			if [[ $suit -eq 0 ]];then #if suit variable = 0, then choose and remove spades
