@@ -39,10 +39,14 @@ name_array=('Constance_Castillo' 'Kerry_Goodwin' 'Dorothy_Carson' 'Craig_William
 'Geneva_Pena' 'Byron_Collier' 'Veronica_Higgins' 'Leo_Roy' 'Nelson_Lopez')
 
 
+#Menu
+menu(){
+
 
 
 #Menu choice 1: Search first names
 search_first_names(){
+clear
 echo "search first names"
 read -p "Enter the first name, or a partial start of the first name: " first_query
 if [[ $first_query -eq " " ]];then
@@ -51,11 +55,11 @@ else
 	echo "Thanks"
 fi
 read -p "Press enter to continue"
-
 }
 
 #Menu choice 2: Search last names
 search_last_names(){
+clear
 echo "search last names"
 read -p "Press enter to continue"
 }
@@ -69,8 +73,11 @@ add_a_name(){
 #take new last name
 #add new full name to name array
 #inform user that name has been added
-
+clear
 read -p "Enter the new first name: " input_new_first
+new_first=$($input_new_first | tr -d ' ') #if name contains whitespace,
+#echo Just the first name, please.	No spaces.
+echo $new_first
 read -p "Enter the new last name: " input_new_last
 read -p "Press enter to continue"
 }
@@ -80,10 +87,9 @@ read -p "Press enter to continue"
 
 #Menu choice 4: Delete a name
 delete_a_name(){
-echo "delete a name"
-read -p "Press enter to continue"
+clear
 echo -e "Delete a name by entering the full name ie: John Smith\n"
-read -p "Enter the full name (Q to return to the main menu, 1 to search first names): input_4
+read -p "Enter the full name (Q to return to the main menu, 1 to search first names):" input_4
 if [[ $input_4 -eq "Q" ]];then
 	menu
 elif [[ $input_4 -eq "q" ]];then
@@ -100,8 +106,6 @@ clear
 
 
 
-#Menu
-menu(){
 while true;
 do
 	clear
@@ -130,3 +134,12 @@ Please select from the following options:
 	fi
 done
 }
+menu
+
+
+
+
+
+
+
+
