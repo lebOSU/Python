@@ -12,12 +12,12 @@ major_descriptors="BAD-TRAFFIC,DNS SPOOF,ET CURRENT_EVENTS,ET DNS,ET INFO,ET MAL
 
 #Menu choice 1 function		Parse alert data
 menu_choice_1 () {
-
+true;
 }
 
 #Menu choice 2 function		Major descriptors
 menu_choice_2 () {
-
+true;
 }
 
 #Menu choice 3 function		Classifications
@@ -27,7 +27,7 @@ echo "This is hateful to do in bash.	Hard pass."
 
 #Menu choice 4 function		Clean up and exit
 menu_choice_4 () {
-
+true;
 }
 
 
