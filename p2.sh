@@ -1,5 +1,12 @@
 #! /bin/sh
+#Caleb Russell
+#Project 2
+#	powerpoints
+#	past solutions
+#	Burkman's demo video
+#	To-do list .docx
 
+#Descriptor string
 major_descriptors="BAD-TRAFFIC,DNS SPOOF,ET CURRENT_EVENTS,ET DNS,ET INFO,ET MALWARE,ET POLICY,ET TROJAN,ET WEB_CLIENT,ICMP,INFO,SCAN,WEB-IIS"
 
 #Code order
@@ -46,7 +53,11 @@ true;
 #		catch invalid options and have the user try again
 
 #Name strings
-
+MY_NAME="Caleb Russell"
+first_name=$(echo $MY_NAME | cut -d " " -f 1)
+last_name=$(echo $MY_NAME | cut -d " " -f2)
+echo $first_name
+echo $last_name
 
 #Data file check
 
