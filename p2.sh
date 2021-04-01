@@ -1,6 +1,8 @@
 #! /bin/sh
 #Caleb Russell
+#alert_full_short.pcap
 #Project 2
+#RESUME AT MENU FUNCTION 1
 #	powerpoints
 #	past solutions
 #	Burkman's demo video
@@ -19,9 +21,21 @@ major_descriptors="BAD-TRAFFIC,DNS SPOOF,ET CURRENT_EVENTS,ET DNS,ET INFO,ET MAL
 
 #Menu choice 1 function			Parse alert data
 menu_choice_1 () {
-true;
 clear
 echo "Please be patient. Parsing data..."
+#open your good data file in your student directory
+#name it alert_full_short_cleaned.csv
+#write the header
+header="Date,Time,Priority,Classification,Description,Packet Type,Source IP,Destination IP,Destination Port"
+echo $header > ~/alert_full_short_cleaned.csv
+#description
+	input=~/alert_full_short.pcap
+	while IFS= read -r line
+	do
+		#sample ET INFO JAVA - Java Archive Download By Vulnerable Client
+		#if [[ $line == \[\*\*\]* ]];then
+			 
+	done
 }
 
 #Menu choice 2 function			Major descriptors
@@ -44,8 +58,6 @@ clear
 choice4name="Russell,Caleb"
 choice4name=$(echo $choice4name | tr "," "_")
 choice4name+=".tgz"
-echo $choice4name
-
 }
 
 
@@ -78,6 +90,22 @@ last_name=$(echo $MY_NAME | cut -d " " -f2)
 
 
 #Data file check
+FILE=~/alert_full_short.pcap.tgz
+#actively check to see if FILE is in the home directory ~
+#if the file is there, unzip the contents to the home director
+if [[ -f "$FILE" ]];then
+	cd ~/
+	tar -xzf $FILE
+#if it is not, tell the user to put the file there and to restart the script
+else
+	echo "alert_full_short.pcap.tgz is missing from your home directory."
+	echo "Please place the file there, and restart the script."
+	read -p
+	exit 
+fi
+
+
+
 
 
 #Menu
@@ -91,6 +119,7 @@ Please select from the following options...
 2.	Major descriptors
 3.	Classifications
 4.	Clean up and exit	
+
 "
 
 read -p "Option #: " user_menu_choice
