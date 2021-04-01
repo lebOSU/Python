@@ -41,6 +41,11 @@ echo "This is hateful to do in bash. Hard pass."
 menu_choice_4 () {
 true;
 clear
+choice4name="Russell,Caleb"
+choice4name=$(echo $choice4name | tr "," "_")
+choice4name+=".tgz"
+echo $choice4name
+
 }
 
 
@@ -56,19 +61,20 @@ clear
 #		catch invalid options and have the user try again
 
 #Create major descriptors array
-declare -a major_descriptors_array=$(echo $major_descriptors | "," " ")
-for i in ${major_descriptors_array[*]};
-	do
-		echo $i
-	done
+declare -a major_descriptors_array=()
+major_descriptors_array=$(echo $major_descriptors | tr "," " ")
+#for i in ${major_descriptors_array[*]};
+#	do
+#		echo $i
+#	done
 
 
 #Name strings
 MY_NAME="Caleb Russell"
 first_name=$(echo $MY_NAME | cut -d " " -f 1)
 last_name=$(echo $MY_NAME | cut -d " " -f2)
-echo $first_name
-echo $last_name
+#echo $first_name
+#echo $last_name
 
 
 #Data file check
